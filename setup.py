@@ -7,6 +7,9 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'keyboard',
-        'mouse',
+        'pynput',
+        'numpy',
+        'matplotlib',
+        # 'mouse',
     ],
 )
