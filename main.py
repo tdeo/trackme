@@ -50,11 +50,12 @@ class Keyboard:
         current[epoch][key] = 0
       current[epoch][key] += 1
 
-    (_, pathname) = tempfile.mkstemp(text=True)
+    (handle, pathname) = tempfile.mkstemp(text=True)
     with open(pathname, 'w') as f:
       json.dump(current, f)
       f.write("\n")
     os.replace(pathname, cls.filename(epoch))
+    os.close(handle)
     os.chown(
       cls.filename(epoch),
       int(os.environ.get('SUDO_UID', -1)),
