@@ -11,10 +11,13 @@ import keyboard
 from pynput import mouse
 import platform
 
-TIME_RANGE = 5 # time to group logs, in seconds
+TIME_RANGE = 60 # time to group logs, in seconds
 
+logging.basicConfig(
+  level=logging.INFO,
+  format='%(asctime)s - %(levelname)s - %(message)s',
+)
 LOGGER = logging.getLogger('trackme')
-LOGGER.setLevel(logging.DEBUG)
 
 LOG_DIR = f'{os.environ.get("HOME")}/.trackme/logs'
 os.makedirs(f'{LOG_DIR}/keyboard', exist_ok=True)
@@ -34,6 +37,7 @@ class Keyboard:
 
   @classmethod
   def flush_log(cls, epoch):
+    LOGGER.info(f'Flushing logs for {epoch}')
     current = {}
     try:
       with open(cls.filename(epoch)) as f:
@@ -83,7 +87,8 @@ class Keyboard:
 
   @classmethod
   def key_released(cls, event):
-    del cls.current[event.scan_code]
+    if event.scan_code in cls.current:
+      del cls.current[event.scan_code]
 
   @classmethod
   def hook(cls, event):
