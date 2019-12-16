@@ -36,12 +36,12 @@ for f in os.listdir(DIR):
 
 svg = f'''
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="{WIDTH / 2 * (x_bounds[1] - x_bounds[0] + 3)}" height="{WIDTH / 2 * (y_bounds[1] - y_bounds[0] + 3)}"
-  viewBox="{x_bounds[0] - 1} {y_bounds[0] - 1} {x_bounds[1] - x_bounds[0] + 3} {y_bounds[1] - y_bounds[0] + 3}"
+  width="{WIDTH / 2 * (x_bounds[1] - x_bounds[0] + 1)}" height="{WIDTH / 2 * (y_bounds[1] - y_bounds[0] + 1)}"
+  viewBox="{x_bounds[0] - 1} {y_bounds[0] - 1} {x_bounds[1] - x_bounds[0] + 1} {y_bounds[1] - y_bounds[0] + 1}"
   version="1.1">
-    <rect width="{x_bounds[1] - x_bounds[0] + 3}" height="{y_bounds[1] - y_bounds[0] + 3}"
+    <rect width="{x_bounds[1] - x_bounds[0] + 1}" height="{y_bounds[1] - y_bounds[0] + 1}"
       x="{x_bounds[0] - 1}" y="{y_bounds[0] - 1}" stroke="grey" stroke-width="1" fill="none" />
-    <rect width="{x_bounds[1] - x_bounds[0] + 3}" height="0.2"
+    <rect width="{x_bounds[1] - x_bounds[0] + 1}" height="0.2"
       x="{x_bounds[0] - 1}" y="-0.1" stroke="none" fill="grey" />
     <g>'''
 
